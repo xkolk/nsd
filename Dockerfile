@@ -1,5 +1,5 @@
-FROM alpine:edge
-MAINTAINER Nicolas Lorin <androw95220@gmail.com>
+FROM alpine:latest
+MAINTAINER Serhii Kolisnyk <kolkmail@gmail.com>
 
 RUN apk add --update --no-cache nsd=4.6.1-r0 openssl
 
