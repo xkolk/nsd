@@ -15,6 +15,10 @@ jobs:
       - name: Set up Docker Buildx
         id: buildx
         uses: docker/setup-buildx-action@v2
+      - name: Cleanup for manifest
+        run: docker buildx rm multi-arch-builder
+      - name: recreate buildx
+        run: docker buildx create --use --name multi-arch-builder --driver-opt network=host --driver-opt image=moby/buildkit:v0.10.6
       - name: login to docker hub
         run: echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
       - name: build the image
